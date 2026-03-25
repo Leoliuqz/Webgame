@@ -1,0 +1,480 @@
+
+    
+    :root {
+      --backgroundcolor: #000;
+      --boxbgcolor: #000;
+      
+      --mainfont: courier;
+      --headerfont: georgia;
+      --fontcolor: #FFF;
+      --bordercolor: #FFF;
+      
+      --accentcolor: red;
+      --accenthovercolor: maroon;
+      
+      --hpcolor: green;
+      --mpcolor: blue;
+      --barbg: grey;
+    }
+    
+    
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 12px;
+      background: #FFF;
+    }
+    
+    ::-webkit-scrollbar-track {
+      border-radius: 0px;
+      width: 0px;  
+      background: var(--backgroundcolor);
+      border-color: var(--bordercolor); 
+      border-width: 1px;
+      border-style: solid;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 0px;
+      background: var(--bordercolor);
+      border-color: var(--bordercolor); 
+      border-width: 1px;
+      border-style: solid;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--backgroundcolor);  
+    }
+    
+    /* ////////////////////////////
+    
+            GENERAL CODING
+    
+    //////////////////////////////*/
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--backgroundcolor);
+      color: var(--fontcolor);
+      font-family: var(--mainfont);
+      
+    }
+    
+    a {
+        color: var(--accentcolor);
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: var(--accenthovercolor);
+    }
+    
+    /* ////////////////////////////
+    
+            SPRITE ANIMATIONS
+    
+    //////////////////////////////*/
+
+    
+    /* normal idle bounce */
+    .bouncysprite {
+      animation: bouncy 3s ease-in-out infinite;
+      transform-origin: bottom;
+    }
+    
+    /* fast idle bounce */
+    .fastbouncysprite {
+      animation: bouncy 0.5s ease-in-out infinite;
+      transform-origin: bottom;
+    }
+    
+    /* bounce back and forth */
+    .backnforthsprite {
+      animation: backnforth 0.5s linear infinite;
+      animation-direction: alternate;
+      transform-origin: bottom;
+    }
+    
+    /* float up and down */
+    .floatysprite {
+      animation: floaty 3s ease-in-out infinite;
+      transform-origin: bottom;
+    }
+    
+    /* fast float up and down */
+    .fastfloatysprite {
+      animation: fastfloaty 0.5s ease-in-out infinite;
+      transform-origin: bottom;
+    }
+    
+    /* spin clockwise */
+    .rightspinnysprite {
+      animation: spinright 1s linear infinite;
+    }
+    
+    /* spin counterclockwise */
+    .leftspinnysprite {
+      animation: spinleft 1s linear infinite;
+    }
+    
+    /* shake */
+    .shakysprite {
+      animation: shake 0.1s linear infinite;
+    }
+
+    
+    /* keyframes */
+    
+    @keyframes bouncy {
+      0%, 100% {
+      transform: scaleY(1) scaleX(1);
+      }
+      50% {
+      transform: scaleY(0.98) scaleX(1);
+      
+      }
+    }
+    
+    @keyframes backnforth {
+      0% {
+        transform: translate(-5px, 0) scaleY(0.95); 
+      }
+      50% {
+        transform: translate(0, -5px); 
+      }
+      100% {
+        transform: translate(5px, 0) scaleY(0.95); 
+      }
+    }
+    
+    @keyframes floaty {
+      0%, 100% {
+        transform: translate(0, 0); 
+      }
+      50% {
+        transform: translate(0, 10px); 
+      }
+    }
+    
+    @keyframes fastfloaty {
+      0%, 100% {
+        transform: translate(0, 0); 
+      }
+      50% {
+        transform: translate(0, 5px); 
+      }
+    }
+    
+    @keyframes spinright {
+      0% {
+        transform: rotate(0deg); 
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spinleft {
+      0% {
+        transform: rotate(0deg); 
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+    
+    @keyframes shake {
+      0%, 100% {
+        transform: translate(-1px, 0); 
+      }
+      50% {
+        transform: translate(1px, 0); 
+      }
+    }
+    
+    /* ////////////////////////////
+    
+              MAIN BOXES
+    
+    //////////////////////////////*/
+    
+    /* wraps the content */
+    #contentwrapper {
+      background-image:url("https://hellaonwheels.neocities.org/img_assets/vn_bgs/barparallax.png");
+      background-position: center center;
+      background-size: cover;
+      width: 900px;
+      height: 546px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+    
+    
+    /* this is the box for actions and text */
+    #menubox {
+      background-color: var(--boxbgcolor);
+      border: 2px #FFF solid;
+      position: absolute;
+      top: 600px;
+      width: 900px;
+      height: 250px;
+    }
+    
+    /* this is the box for your party's status */
+    #partybox {
+      background-color: var(--boxbgcolor);
+      border-width: 2px;
+      border-color: var(--bordercolor);
+      border-style: solid;
+      float: right;
+      max-height: 545px;
+      width: 200px;
+      overflow: auto;
+    }
+    
+    /* this is a box for an individual party member's status */
+    .partymember {
+      border-bottom: 1px #FFF solid;
+      padding: 10px;
+      font-size: 12px;
+    }
+    
+    
+    /* horizontal dashed line in party member boxes */
+    .partymember hr {
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      clear: both;
+      border-color: var(--bordercolor);
+      border-width: 1px 0 0 0;
+      border-style: dashed;
+    }
+    
+    /* party member icons like status effects or class icons */
+    .partymembericon {
+      box-sizing: content-box;
+      max-width: 20px;
+      max-height: 20px;
+      padding: 3px 3px 0 0;
+    }
+    
+    /* party member avatar */
+    .partyavatar {
+      float: left;
+      max-height: 75px;
+      max-width: 75px;
+      padding: 0 10px 10px 0;
+    }
+    
+    /* ////////////////////////////
+    
+                HEADERS
+    
+    //////////////////////////////*/
+    
+    h1, h2, h3 {
+      font-variant: small-caps;
+      color: var(--fontcolor);
+      font-family: var(--headerfont);
+    }
+    
+    h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+    
+    
+    h3 {
+      font-size: 15px;
+      margin: 8px 0 0 0;
+    } 
+    
+    /* ////////////////////////////
+    
+            HP AND MANA BARS
+    
+    //////////////////////////////*/
+    
+    .bar {
+      background-color: var(--barbgcolor);
+      width: 100%;
+      height: 10px;
+      border-width: 1px;
+      border-color: var(--bordercolor);
+      border-style: solid;
+      margin: 2px 0 2px 0;
+    }
+    
+    .bossbar {
+      background-color: var(--barbgcolor);
+      width: 50%;
+      height: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      border-width: 1px;
+      border-color: var(--bordercolor);
+      border-style: solid;
+    }
+    
+    /* ////////////////////////////
+    
+              ACTION MENU
+    
+    //////////////////////////////*/
+    
+    .menulist {
+     list-style: none;
+    }
+    
+    .menulist li {
+     padding-bottom: 3px; 
+    }
+    
+    .menulist a {
+     color: var(--fontcolor); 
+    }
+    
+    .menulist li:hover {
+     list-style: '► ';
+    }
+    
+    #menucontainer {
+      height: 220px; 
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .menuscrollbox {
+      height: 220px; 
+      width: 100%;
+      padding: 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .menuscrollbox p {
+      margin: 10px;
+    }
+    
+    .inventorybox {
+      display: flex;
+      flex-wrap: wrap;  
+      margin: 10px 0 10px 0;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    
+    .itemthumbnail {
+      background-color: transparent;
+      padding: 5px;
+      margin: 3px;
+      max-width: 100px;
+      color: var(--fontcolor);
+      text-align: center;
+      font-size: 10px;
+      overflow-x: hidden;
+      align-items: center;
+    }
+    
+    .itemthumbnail h2 {
+      font-size: 12px;
+    }
+    
+    .itemthumbnail img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+    
+    /* ////////////////////////////
+    
+              SPRITE BOXES
+    
+    //////////////////////////////*/
+    
+    #spritebox {
+      float: left;
+      height: 545px;
+      width: 670px;
+    }
+    
+    #bossspritebox {
+      float: left;
+      text-align: center;
+      height: 545px;
+      width: 250px;
+    }
+    
+    .bosssprite, .partysprite {
+      margin: 10px;
+    }
+    
+    .nudgeleft {
+      padding-right: 50px; 
+    }
+    
+    .nudgeright {
+      padding-left: 50px;
+    }
+
+    #partyspritebox {
+      float: right;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      height: 545px;
+      width: 250px;
+    }
+    
+    .partyspritecontainer {
+      width: 250px;
+    }
+
+   body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+}
+
+/* 游戏主容器 */
+#game-container {
+  background: rgba(0,0,0,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  max-width: 1000px;
+}
+
+/* 游戏画布 */
+#sketch-holder canvas {
+  display: block;
+  border: 4px solid #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+/* HUD 提示（窗口下方） */
+#hud {
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+#hud div {
+  margin: 12px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
